@@ -8,11 +8,23 @@
 
 import Foundation
 struct WeatherManager {
-let weatherURL =
-    "http://api.openweathermap.org/data/2.5/weather?q=&appid=653822646053d2d365db9e3177c45f66&units=metric"
+    let weatherURL =
+        "https://api.openweathermap.org/data/2.5/weather?&appid=653822646053d2d365db9e3177c45f66&units=metric"
     func fetchWeather(cityName:String){
-        
         let urlString = "\(weatherURL)&q=\(cityName)"
-        print(urlString)
+        performRequest(urlString: urlString)
     }
+    func performRequest(urlString: String) {
+        if let url = URL(string: urlString) {
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: url, completionHandler: )
+            task.resume()
+            
+        }
+        
+    }
+    func handle(data: Data ,response: URLResponse? ,error: Error?){
+
+    }
+    
 }
